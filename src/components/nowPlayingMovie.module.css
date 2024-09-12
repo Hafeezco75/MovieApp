@@ -1,0 +1,16 @@
+.movie{
+    /*justify-content: space-between;
+    align-items: center;*/
+    width: 230px;
+}
+
+.container{
+    /* display: flex;*/
+    width: 100vw;
+    display: grid;
+    margin: auto;
+    grid-template-columns: 2fr 1fr 1fr;
+}
+.mainWrapper{
+    width: 95vw;
+}
