@@ -1,20 +1,21 @@
 import React from 'react';
-import {useGetAllPopularMoviesQuery} from "../app/service/api";
+import {useGetTopRatedMoviesQuery} from "../app/service/api";
 import style from "./nowPlayingMovie.module.css"
+
 
 const img = process.env.REACT_APP_MOVIE_IMAGES;
 
-const NowPlayingMovie = () => {
+const TopRatedMovie = () => {
 
-    const {data, isLoading, isError} = useGetAllPopularMoviesQuery();
+    const {data, isLoading, isFalse} = useGetTopRatedMoviesQuery();
     console.log(data);
 
     if (isLoading) {
-        return <div><h1>Loading...</h1></div>;
+        return <div>Loading...</div>;
     }
 
-    if (isError) {
-        return <div><h1>An error occurred</h1></div>
+    if (isFalse) {
+        return <div>An Error Occurred</div>;
     }
 
     return (
@@ -22,8 +23,8 @@ const NowPlayingMovie = () => {
         <div className={style.container}>
             {data?.results?.map((movie) => (
                 <div className={style.movie} key={movie.id}>
-                    <img className={style.img} src={`${img}${movie.poster_path}`} alt={movie.overview} />
-                    <p>{movie.title}</p>
+                    <img className={style.img} src={`${img}${movie.poster_path}`} alt={movie.overview}/>
+                    <p>{movie.id}</p>
                     <p>{movie.overview}</p>
                     <p>{movie.releaseDate}</p>
                 </div>
@@ -31,8 +32,7 @@ const NowPlayingMovie = () => {
         </div>
         </div>
     )
+
 }
 
-
-
-export default NowPlayingMovie;
+export default TopRatedMovie;

@@ -11,9 +11,15 @@ export const movieApi = createApi({
     endpoints: (builder)=> ({
         getAllNowPlayingMovies: builder.query({
             query:()=>(`/now_playing?api_key=${apiKey}`)
+        }),
+        getAllPopularMovies: builder.query({
+            query:()=>(`/popular?api_key=${apiKey}`)
+        }),
+        getTopRatedMovies: builder.query({
+            query:()=>(`/top_rated?api_key=${apiKey}`)
         })
     })
 })
 
 
-export const {useGetAllNowPlayingMoviesQuery} = movieApi
+export const {useGetAllNowPlayingMoviesQuery, useGetAllPopularMoviesQuery, useGetTopRatedMoviesQuery} = movieApi
